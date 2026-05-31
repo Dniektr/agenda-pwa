@@ -1,0 +1,50 @@
+{
+  "configVersion": 1,
+  "timestamp": 1780248871552,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/favicon.ico",
+        "/index.html",
+        "/main-QJSAT5EK.js",
+        "/manifest.webmanifest",
+        "/styles-MFC7JYEW.css"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/favicon.ico": "9c39f434fe1261f68c5e3eefdf734630d99c5670",
+    "/index.html": "a18d2bbc45a17cc151bb54532efd546491c558dc",
+    "/main-QJSAT5EK.js": "edb69942a14de9e7ed76acfbe7f40d636bd96bee",
+    "/manifest.webmanifest": "dc0c0da26a51fa3e9decee19f3842e7714176244",
+    "/styles-MFC7JYEW.css": "fca6574369d34dbbf59de90df43fb568b952f398"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}

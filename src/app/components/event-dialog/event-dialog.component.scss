@@ -1,0 +1,74 @@
+h2[mat-dialog-title] {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.1rem;
+}
+
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 8px;
+  min-width: 320px;
+}
+
+.full-width { width: 100%; }
+
+.row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.cat-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.reminders-section {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 10px 12px;
+  border: 1px solid #e0e0e0;
+}
+
+.reminders-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: rgba(0,0,0,0.7);
+
+  mat-icon { font-size: 18px; width: 18px; height: 18px; color: #666; }
+  span { flex: 1; font-weight: 500; }
+}
+
+.reminders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.reminder-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.reminder-select {
+  flex: 1;
+  // réduire la hauteur du mat-form-field
+  ::ng-deep .mat-mdc-form-field-infix { padding-top: 6px; padding-bottom: 6px; }
+}
+
+mat-dialog-content { max-height: 70vh; overflow-y: auto; }
+
+@media (max-width: 480px) {
+  .row-2 { grid-template-columns: 1fr; }
+  .form-grid { min-width: unset; }
+}

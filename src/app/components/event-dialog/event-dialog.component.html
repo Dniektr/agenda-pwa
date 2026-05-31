@@ -1,0 +1,90 @@
+<h2 mat-dialog-title>
+  <mat-icon>{{ isEdit ? 'edit_calendar' : 'event_add' }}</mat-icon>
+  {{ isEdit ? 'Modifier le rendez-vous' : 'Nouveau rendez-vous' }}
+</h2>
+
+<mat-dialog-content [formGroup]="form">
+  <div class="form-grid">
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Titre</mat-label>
+      <input matInput formControlName="title" placeholder="Titre du rendez-vous" />
+      <mat-icon matPrefix>title</mat-icon>
+    </mat-form-field>
+
+    <div class="row-2">
+      <mat-form-field appearance="outline">
+        <mat-label>Début</mat-label>
+        <input matInput type="datetime-local" formControlName="start" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Fin</mat-label>
+        <input matInput type="datetime-local" formControlName="end" />
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Lieu</mat-label>
+      <input matInput formControlName="location" placeholder="Adresse ou lieu" />
+      <mat-icon matPrefix>place</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Catégorie</mat-label>
+      <mat-select formControlName="category">
+        <mat-option *ngFor="let cat of categories" [value]="cat">
+          <span class="cat-dot" [style.background]="categoryColors[cat]"></span>
+          {{ cat | titlecase }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Rappels multiples -->
+    <div class="reminders-section">
+      <div class="reminders-header">
+        <mat-icon>notifications</mat-icon>
+        <span>Rappels</span>
+        <button mat-icon-button type="button" (click)="addReminder()" [disabled]="remindersArray.length >= 5" matTooltip="Ajouter un rappel">
+          <mat-icon>add_circle_outline</mat-icon>
+        </button>
+      </div>
+
+      <div formArrayName="reminders" class="reminders-list">
+        <div *ngFor="let ctrl of remindersArray.controls; let i = index" class="reminder-row">
+          <mat-form-field appearance="outline" class="reminder-select">
+            <mat-select [formControlName]="i">
+              <mat-option *ngFor="let opt of reminderOptions" [value]="opt.value">
+                {{ opt.label }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-icon-button type="button" color="warn" (click)="removeReminder(i)" [disabled]="remindersArray.length === 1">
+            <mat-icon>remove_circle_outline</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notes avec hint URL -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Notes</mat-label>
+      <textarea matInput formControlName="notes" rows="3"
+        placeholder="Notes, lien vers un billet, une réservation..."></textarea>
+      <mat-icon matPrefix>notes</mat-icon>
+      <mat-hint>Les liens (https://...) seront cliquables dans la fiche</mat-hint>
+    </mat-form-field>
+
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Annuler</button>
+  @if (isEdit) {
+    <button mat-button color="warn" (click)="delete()">
+      <mat-icon>delete</mat-icon> Supprimer
+    </button>
+  }
+  <button mat-flat-button color="primary" (click)="save()" [disabled]="form.invalid">
+    <mat-icon>save</mat-icon> Enregistrer
+  </button>
+</mat-dialog-actions>

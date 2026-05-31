@@ -1,0 +1,62 @@
+:host { display: block; height: 100%; }
+
+.calendar-container {
+  padding: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+
+  h1 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    .logo { font-size: 1.6rem; }
+  }
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.import-btn {
+  font-size: 0.82rem;
+  height: 36px;
+  mat-icon { font-size: 18px; margin-right: 4px; }
+}
+
+.calendar-wrapper {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 16px;
+  overflow: hidden;
+}
+
+:host ::ng-deep {
+  .fc-toolbar-title { font-size: 1.1rem !important; }
+  .fc-button { text-transform: none !important; font-size: 0.82rem !important; }
+  .fc-event { cursor: pointer; border-radius: 4px; font-size: 0.8rem; padding: 1px 4px; }
+  .fc-daygrid-day-number { font-size: 0.85rem; }
+  .fc-col-header-cell-cushion { font-size: 0.85rem; text-transform: capitalize; }
+}
+
+@media (max-width: 600px) {
+  .calendar-container { padding: 8px; }
+  .calendar-wrapper { padding: 8px; border-radius: 8px; }
+  .import-btn span { display: none; } // masquer le texte, garder l'icône
+  :host ::ng-deep {
+    .fc-toolbar { flex-direction: column; gap: 8px; }
+    .fc-toolbar-title { font-size: 1rem !important; }
+  }
+}

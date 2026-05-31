@@ -1,0 +1,38 @@
+<div class="calendar-container">
+  <div class="calendar-header">
+    <h1>
+      <span class="logo">📅</span>
+      Mon Agenda
+    </h1>
+    <div class="header-actions">
+      <!-- Import ICS -->
+      <input
+        #icsInput
+        type="file"
+        accept=".ics,text/calendar"
+        multiple
+        style="display:none"
+        (change)="onIcsFileSelected($event)"
+      />
+      <button
+        mat-stroked-button
+        (click)="triggerIcsImport()"
+        [disabled]="importing"
+        matTooltip="Importer un fichier .ics (Doctolib, Google…)"
+        class="import-btn"
+      >
+        <mat-icon>file_download</mat-icon>
+        {{ importing ? 'Import…' : 'Importer .ics' }}
+      </button>
+
+      <!-- Nouveau RDV -->
+      <button mat-fab color="primary" (click)="openNewEvent()" aria-label="Nouveau rendez-vous">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="calendar-wrapper">
+    <full-calendar [options]="calendarOptions()"></full-calendar>
+  </div>
+</div>
